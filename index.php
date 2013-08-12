@@ -263,7 +263,7 @@ $app_name = idx($app_info, 'name', '');
         '</div>';
 
 
-    var infowindow<?php $event['eid'];?> = new google.maps.InfoWindow({
+    var infowindow<?php echo $event['eid'];?> = new google.maps.InfoWindow({
     content: content<?php echo $event['eid'];?>
     });
 
