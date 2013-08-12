@@ -268,7 +268,7 @@ $app_name = idx($app_info, 'name', '');
     });
 
     var marker<?php echo $event['eid'];?> = new google.maps.Marker({
-    position: new google.maps.LatLng(<?php echo $event['venue']['latitude'];?>,<?php echo $event['venue']['longitude'];?>);,
+    position: new google.maps.LatLng(<?php echo $event['venue']['latitude'];?>,<?php echo $event['venue']['longitude'];?>),
     map: map,
     title:"<?php echo $event['name'];?>"
     });
