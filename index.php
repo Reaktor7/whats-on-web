@@ -8,37 +8,8 @@
  * to learn more about the resources available to you
  */
 
-// Provides access to app specific values such as your app id and app secret.
-// Defined in 'AppInfo.php'
-require_once('AppInfo.php');
-
-// Enforce https on production
-if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-    exit();
-}
-
-// This provides access to helper functions defined in 'utils.php'
-require_once('utils.php');
-
-
-/*****************************************************************************
- *
- * The content below provides examples of how to fetch Facebook data using the
- * Graph API and FQL.  It uses the helper functions defined in 'utils.php' to
- * do so.  You should change this section so that it prepares all of the
- * information that you want to display to the user.
- *
- ****************************************************************************/
-
-require_once('sdk/src/facebook.php');
-
-$facebook = new Facebook(array(
-    'appId' => AppInfo::appID(),
-    'secret' => AppInfo::appSecret(),
-    'sharedSession' => true,
-    'trustForwarded' => true,
-));
+require_once 'app/facebook.php';
+require_once 'app/utils.php';
 
 
 $lat = "-34.725071";
@@ -201,23 +172,6 @@ $app_name = idx($app_info, 'name', '');
                 var map = new google.maps.Map(document.getElementById("map-canvas"),
                     mapOptions);
                 <?php foreach($events2 as $event):?>
-                var content<?php echo $event['eid'];?> = '<div id="event-<?php echo $event['eid'];?>">'+
-                    '<div id="siteNotice">'+
-                    '</div>'+
-                    '<h2 id="firstHeading" class="firstHeading"><?php echo he($event['name']);?></h2>'+
-                    '<div id="bodyContent">'+
-                    '<img style="float:right;padding-left:10px;padding-bottom:10px;max-width:100px" src="<?php echo he($event['pic_big']);?>"/>'+
-                    '<p><b>Location:</b> <?php echo he($event['location']);?></p>'+
-                    '<p><b>Start Time: </b><?php echo he($event['start_time']);?></p>'+
-                    '<p><b>End Time: </b><?php echo he($event['end_time']);?></p>'+
-                    '<p><?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', he($event['description']));?></p>'+
-                    '</div>'+
-                    '</div>';
-
-
-                var infowindow<?php echo $event['eid'];?> = new google.maps.InfoWindow({
-                    content: content<?php echo $event['eid'];?>
-                });
 
                 var marker<?php echo $event['eid'];?> = new google.maps.Marker({
                     position: new google.maps.LatLng(<?php echo $event['venue']['latitude'];?>,<?php echo $event['venue']['longitude'];?>),
@@ -226,9 +180,12 @@ $app_name = idx($app_info, 'name', '');
                 });
 
                 google.maps.event.addListener(marker<?php echo $event['eid'];?>, 'click', function() {
-                    infowindow<?php echo $event['eid'];?>.open(map,marker<?php echo $event['eid'];?>);
+                    loadInfoBox('<?php echo $event['eid'];?>');
                 });
                 <?php endforeach;?>
+            }
+            function loadInfoBox(eid) {
+
             }
             google.maps.event.addDomListener(window, 'load', initialize);
         </script>
