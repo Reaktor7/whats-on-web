@@ -268,13 +268,13 @@ $app_name = idx($app_info, 'name', '');
     });
 
     var marker<?php echo $event['eid'];?> = new google.maps.Marker({
-    position: new google.maps.LatLng(<?php echo '';?>,131.044922);,
+    position: new google.maps.LatLng(<?php echo $event['venue']['latitude'];?>,<?php echo $event['venue']['longitude'];?>);,
     map: map,
-    title:"Uluru (Ayers Rock)"
+    title:"<?php echo $event['name'];?>"
     });
 
-    google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
+    google.maps.event.addListener(marker<?php echo $event['eid'];?>, 'click', function() {
+    infowindow<?php echo $event['eid'];?>.open(map,marker<?php echo $event['eid'];?>);
     });
     <?php endforeach;?>
     </script>
