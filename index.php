@@ -40,6 +40,13 @@ $facebook = new Facebook(array(
     'trustForwarded' => true,
 ));
 
+
+$lat = "-34.725071";
+$long = "135.881030";
+
+// using offset gives us a "square" on the map from where to search the events
+$offset = 0.4;
+
 $user_id = $facebook->getUser();
 if ($user_id) {
     try {
@@ -73,11 +80,6 @@ if ($user_id) {
     ));
 
 
-    $lat = "-34.725071";
-    $long = "135.881030";
-
-    // using offset gives us a "square" on the map from where to search the events
-    $offset = 0.4;
 
     $events = 'SELECT pic_big, name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR uid = me()) AND venue.longitude < \'' . ($long + $offset) . '\' AND venue.latitude < \'' . ($lat + $offset) . '\' AND venue.longitude > \'' . ($long - $offset) . '\' AND venue.latitude > \'' . ($lat - $offset) . '\' ORDER BY start_time ASC ';
     $events2 = $facebook->api(array(
@@ -192,7 +194,7 @@ $app_name = idx($app_info, 'name', '');
         <script type="text/javascript">
             function initialize() {
                 var mapOptions = {
-                    center: new google.maps.LatLng(-34.397, 150.644),
+                    center: new google.maps.LatLng(<?php echo $lat;?>, <?php echo $long;?>),
                     zoom: 8,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
