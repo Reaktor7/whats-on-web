@@ -245,7 +245,7 @@ $app_name = idx($app_info, 'name', '');
     var content<?php echo $event['eid'];?> = '<div id="event-<?php echo $event['eid'];?>">'+
         '<div id="siteNotice">'+
             '</div>'+
-        '<h2 id="firstHeading" class="firstHeading"><?php echo $event['name'];?></h2>'+
+        '<h2 id="firstHeading" class="firstHeading"><?php echo he($event['name']);?></h2>'+
         '<div id="bodyContent">'+
             '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
                 'sandstone rock formation in the southern part of the '+
@@ -270,7 +270,7 @@ $app_name = idx($app_info, 'name', '');
     var marker<?php echo $event['eid'];?> = new google.maps.Marker({
     position: new google.maps.LatLng(<?php echo $event['venue']['latitude'];?>,<?php echo $event['venue']['longitude'];?>),
     map: map,
-    title:"<?php echo $event['name'];?>"
+    title:"<?php echo he($event['name']);?>"
     });
 
     google.maps.event.addListener(marker<?php echo $event['eid'];?>, 'click', function() {
