@@ -42,6 +42,15 @@ function initialize() {
     map.setCenter(marker.getPosition());
 	map.setMapTypeId(google.maps.MapTypeId.HYBRID);
   });
+  
+  google.maps.event.addListener(map, "click", function(event) {
+    addMarker = new google.maps.Marker({
+		position: event.latLng,
+		map: map,
+		title: 'User added marker'
+	});
+	
+});
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
