@@ -7,6 +7,9 @@
  * Query Language). Please visit the docs at 'developers.facebook.com/docs'
  * to learn more about the resources available to you
  */
+ini_set('display_errors', true);
+ini_set('display_startup_errors', true);
+error_reporting(E_ALL);
 
 require_once 'app/facebook.php';
 require_once 'app/utils.php';
