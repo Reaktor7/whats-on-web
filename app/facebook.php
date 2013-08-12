@@ -27,7 +27,7 @@ if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != 
  *
  ****************************************************************************/
 
-require_once('sdk/src/facebook.php');
+require_once('./app/sdk/src/facebook.php');
 
 $facebook = new Facebook(array(
     'appId' => AppInfo::appID(),
