@@ -276,6 +276,7 @@ $app_name = idx($app_info, 'name', '');
     google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map,marker);
     });
+    <?php endforeach;?>
     </script>
     <header class="clearfix">
         <?php if (isset($basic)) { ?>
