@@ -383,8 +383,8 @@ $app_name = idx($app_info, 'name', '');
   </body>
 </html>
 <?php
-$lat = "40";
-$long = "30";
+$lat = "-34.725071";
+$long = "135.881030";
 
 // using offset gives us a "square" on the map from where to search the events
 $offset = 0.4;
