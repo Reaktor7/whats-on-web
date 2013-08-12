@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>Simple Map!</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -47,6 +47,7 @@ function initialize() {
     addMarker = new google.maps.Marker({
 		position: event.latLng,
 		map: map,
+		draggable: true,
 		title: 'User added marker'
 	});
 	
