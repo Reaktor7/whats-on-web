@@ -209,7 +209,7 @@ $app_name = idx($app_info, 'name', '');
                     '<p><b>Location:</b> <?php echo he($event['location']);?></p>'+
                     '<p><b>Start Time: </b><?php echo he($event['location']);?></p>'+
                     '<p><b>End Time: </b><?php echo he($event['location']);?></p>'+
-                    '<p><?php echo he($event['description']);?></p>'+
+                    '<p><?php echo nl2br(he($event['description']),true);?></p>'+
                     '</div>'+
                     '</div>';
 
