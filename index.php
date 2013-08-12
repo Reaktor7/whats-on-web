@@ -189,7 +189,7 @@ $app_name = idx($app_info, 'name', '');
         </script>
         <![endif]-->
         <script type="text/javascript"
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCqA6HexVvYxjlw2kSoIc_K1dQJeHSnB8&sensor=TRUE">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCqA6HexVvYxjlw2kSoIc_K1dQJeHSnB8&sensor=true">
         </script>
         <script type="text/javascript">
             function initialize() {
